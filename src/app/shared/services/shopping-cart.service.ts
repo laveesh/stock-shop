@@ -66,7 +66,7 @@ export class ShoppingCartService {
       .valueChanges()
       .pipe(take(1))
       .subscribe(item => {
-        const quantity = (item['quantity'] || 0) + change;
+        const quantity = item ? (item['quantity'] || 0) + change : change;
         if (quantity === 0) {
           item$.remove();
         } else {

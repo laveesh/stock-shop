@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: 'YOUR_API_KEY',
-    authDomain: 'YOUR_AUTH_DOMAIN',
-    databaseURL: 'YOUR_DATABASE_URL',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_STORAGE_BUCKET',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID'
+    apiKey: 'AIzaSyBkak__TOlxVkWWxD4mb2YWDiiPIY6jmCg',
+    authDomain: 'stock-shop.firebaseapp.com',
+    databaseURL: 'https://stock-shop.firebaseio.com',
+    projectId: 'stock-shop',
+    storageBucket: '',
+    messagingSenderId: '599715174227'
   }
 };
