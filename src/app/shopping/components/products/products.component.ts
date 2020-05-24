@@ -5,7 +5,7 @@ import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -32,9 +32,18 @@ export class ProductsComponent implements OnInit {
   private populateProducts() {
     this.productService
       .getAll()
-      .valueChanges()
+      .snapshotChanges()
       .pipe(
-        switchMap((products: Product[]) => {
+        map(data =>
+          data.map(ref => {
+            const object: Product = ref.payload.val() as Product;
+            object.$key = ref.payload.key;
+            return object;
+          })
+        )
+      )
+      .pipe(
+        switchMap(products => {
           this.products = products;
           return this.route.queryParamMap;
         })
